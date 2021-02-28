@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="shortcut icon" href="spam_1.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPAM</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    ul[id="moglog"],
+    li[id="moglog"] {
+      list-style-type: none;
+      float: left;
+    }
+
+    .section input[id*="slide"] {
+      display: none;
+    }
+
+    .section .slidewrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section .slidelist {
+      white-space: nowrap;
+      font-size: 0;
+      overflow: hidden;
+      position: relative;
+      margin-top: 100px;
+    }
+
+    .section .slidelist>li {
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      transition: all .5s;
+    }
+
+    .section .slidelist>li>a {
+      display: block;
+      position: relative;
+    }
+
+    .section .slidelist>li>a img {
+      width: 100%;
+    }
+
+    .section .slidelist label {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 50px;
+      cursor: pointer;
+    }
+
+    .section .slidelist .textbox {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .section .slidelist .textbox h3 {
+      font-size: 36px;
+      color: #fff;
+      transform: translateY(30px);
+      transition: all .5s;
+    }
+
+    .section .slidelist .textbox p {
+      font-size: 16px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all .5s;
+    }
+
+    .section input[id="slide01"]:checked~.slidewrap .slidelist>li {
+      transform: translateX(0%);
+    }
+
+    .section input[id="slide02"]:checked~.slidewrap .slidelist>li {
+      transform: translateX(-100%);
+    }
+
+    .section input[id="slide03"]:checked~.slidewrap .slidelist>li {
+      transform: translateX(-200%);
+    }
+
+    .section input[id="slide01"]:checked~.slidewrap li:nth-child(1) .textbox h3 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .2s;
+    }
+
+    .section input[id="slide01"]:checked~.slidewrap li:nth-child(1) .textbox p {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .4s;
+    }
+
+    .section input[id="slide02"]:checked~.slidewrap li:nth-child(2) .textbox h3 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .2s;
+    }
+
+    .section input[id="slide02"]:checked~.slidewrap li:nth-child(2) .textbox p {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .4s;
+    }
+
+    .section input[id="slide03"]:checked~.slidewrap li:nth-child(3) .textbox h3 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .2s;
+    }
+
+    .section input[id="slide03"]:checked~.slidewrap li:nth-child(3) .textbox p {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .4s;
+    }
+
+    .slide-control>div {
+      display: none;
+    }
+
+    .section .left {
+      left: 30px;
+      background: url('left1.png') center center / 100% no-repeat;
+    }
+
+    .section .right {
+      right: 30px;
+      background: url('right2.png') center center / 100% no-repeat;
+    }
+
+    .section input[id="slide01"]:checked~.slidewrap .slide-control>div:nth-child(1) {
+      display: block;
+    }
+
+    .section input[id="slide02"]:checked~.slidewrap .slide-control>div:nth-child(2) {
+      display: block;
+    }
+
+    .section input[id="slide03"]:checked~.slidewrap .slide-control>div:nth-child(3) {
+      display: block;
+    }
+
+    .slide-pagelist {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .slide-pagelist>li {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .slide-pagelist>li>label {
+      display: block;
+      padding: 4px 15px;
+      border-radius: 15px;
+      background: #ccc;
+      margin: 10px 5px;
+      cursor: pointer;
+    }
+
+    .section input[id="slide01"]:checked~.slidewrap .slide-pagelist>li:nth-child(1)>label {
+      background: #999;
+    }
+
+    .section input[id="slide02"]:checked~.slidewrap .slide-pagelist>li:nth-child(2)>label {
+      background: #999;
+    }
+
+    .section input[id="slide03"]:checked~.slidewrap .slide-pagelist>li:nth-child(3)>label {
+      background: #999;
+    }
+
+    body {
+      margin: 0;
+      background-color: #828688;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .mogcha {
+      width: 100%;
+      height: 60px;
+      box-sizing: content-box;
+      background-color: rgb(0, 0, 73);
+      margin-bottom: 20px;
+      box-shadow: 10px 10px 10px;
+      color: black;
+    }
+
+    .mainpicture {
+      margin: 0;
+      background-color: rgb(0, 0, 73);
+      color: yellow;
+
+    }
+
+    .maintitle {
+      text-align: right;
+      font-size: 50px;
+      margin-right: 15px;
+    }
+
+    .moglog {
+      font-size: 30px;
+      font-weight: 420;
+      margin-left: 236.328px;
+    }
+
+    .onclick {
+      color: yellow;
+      text-decoration:none !important
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mainpicture">
+    <a class="onclick" href="subtitle.html">
+      <h1 class="maintitle"><img src="spam_1.png" style="width: 50px;">SPAM</h1>
+      <ul class="mogcha" id="moglog">
+        <li class="moglog" id="moglog"><a class="onclick" href="spamintruduce.html">about</a></li>
+        <li class="moglog" id="moglog"><a class="onclick" href="spamjoin.html">join</a></li>
+        <li class="moglog" id="moglog"><a class="onclick" href="spammember.html">member</a></li>
+        <li class="moglog" id="moglog"><a class="onclick" href="spamactivity.html">activity</a></li>
+      </ul>
+    </a>
+  </div>
+
+  <div class="section">
+
+    <input type="radio" name="slide" id="slide01" checked="">
+    <input type="radio" name="slide" id="slide02">
+    <input type="radio" name="slide" id="slide03">
+    <div class="slidewrap">
+
+      <ul class="slidelist">
+        <li class="slideitem">
+          <a>
+            <img src="img1.png">
+          </a>
+        </li>
+        <li class="slideitem">
+          <a>
+            <img src="img2.jpg">
+          </a>
+        </li>
+        <li class="slideitem">
+          <a>
+            <img src="img3.jpg">
+          </a>
+        </li>
+
+        <div class="slide-control">
+          <div>
+            <label for="slide03" class="left"></label>
+            <label for="slide02" class="right"></label>
+          </div>
+          <div>
+            <label for="slide01" class="left"></label>
+            <label for="slide03" class="right"></label>
+          </div>
+          <div>
+            <label for="slide02" class="left"></label>
+            <label for="slide01" class="right"></label>
+          </div>
+        </div>
+
+      </ul>
+      <ul class="slide-pagelist">
+        <li><label for="slide01"></label></li>
+        <li><label for="slide02"></label></li>
+        <li><label for="slide03"></label></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
